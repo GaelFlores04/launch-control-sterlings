@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Launch Control by team sterlings: a cooperative space-mission game for the NASA Space Apps Challenge 2026 (Space Mission Design Game).">
+<meta name="theme-color" content="#0e1d26">
+<title>Launch Control — sterlings</title>
+<link rel="stylesheet" href="deck.css">
+</head>
+<body>
+<div class="viewport">
+<main class="stage" id="stage">
+
+  <!-- persistent mission HUD -->
+  <header class="hud" aria-label="Presentation status">
+    <div class="hud-clock" id="clock" title="Mission clock. T starts or pauses, R resets.">03:50</div>
+    <div class="hud-pending"><span id="pending">Slide 1 of 5</span><span class="hud-budget" id="budget">Slide 0:20</span></div>
+    <ol class="hud-track" id="track" aria-label="Slides">
+      <li><button type="button" data-slide="0">Cover</button></li><li><button type="button" data-slide="1">Challenge</button></li><li><button type="button" data-slide="2">Development</button></li><li><button type="button" data-slide="3">Solution</button></li><li><button type="button" data-slide="4">In action</button></li>
+    </ol>
+    <div class="hud-bar"><i id="bar"></i></div>
+  </header>
+
+  <!-- 1 · COVER -->
+  <section class="slide s-cover" data-steps="0" data-seconds="20" aria-label="Launch Control — Space Mission Design Game">
+    <div class="cover-img cover-left"><img src="media/cockpit-clean.png" alt="The astronaut's cockpit in the Launch Control prototype"></div>
+    <div class="cover-img cover-right"><img src="media/tower-clean.png" alt="The mission control room in the Launch Control prototype"></div>
+    <div class="cover-seam" aria-hidden="true"></div>
+    <span class="tag tag-l">Astronaut</span>
+    <span class="tag tag-r">Mission Control</span>
+    <div class="plate cover-plate">
+      <h1><span>Launch</span> <span>Control</span></h1>
+      <p class="cover-challenge">Space Mission Design Game</p>
+      <p class="cover-line">Two roles. One shared mission.</p>
+    </div>
+    <div class="cover-team">
+      <p class="team-name">Team sterlings <span>NASA Space Apps Challenge 2026 · Ensenada, Mexico</span></p>
+      <ul>
+        <li>Gael Flores Cañedo</li><li>Jorge Roel Vasquez Sanchez</li><li>Kevin Humberto Soto Ortiz</li>
+        <li>Israel Gomez Ahumada</li><li>Jorge Abraham Garcia Sojo</li><li>Adrian Balderas Rosas</li>
+      </ul>
+    </div>
+    <p class="ai-note">Prototype captures · AI-assisted visuals</p>
+  </section>
+
+  <!-- 2 · CHALLENGE -->
+  <section class="slide s-challenge" data-steps="3" data-seconds="45" aria-label="Understanding the Challenge">
+    <h2>Understanding the Challenge</h2>
+    <div class="path" aria-hidden="true"><i></i></div>
+    <div class="cols3">
+      <article data-at="1">
+        <div class="node"><svg viewBox="0 0 48 48"><circle cx="21" cy="21" r="12"/><path d="M30 30l11 11"/></svg></div>
+        <h3>What NASA's material shows</h3>
+        <ul class="sources">
+          <li><b>Artemis II</b> A crewed mission where the rocket and the spacecraft have distinct jobs.</li>
+          <li><b>Mission Control Center</b> Specialized ground roles. One voice, Capcom, talks to the crew.</li>
+          <li><b>Rocket Systems Area</b> Equipment is checked before it is trusted.</li>
+          <li><b>Missions, A to Z</b> A mission directory and an alphabetical research index.</li>
+        </ul>
+      </article>
+      <article data-at="2">
+        <div class="node"><svg viewBox="0 0 48 48"><path d="M24 6l19 34H5z"/><path d="M24 19v10M24 34v1"/></svg></div>
+        <h3>The problem we identified</h3>
+        <p class="big">Real missions require specialized teams, detailed procedures and crew-ground coordination.</p>
+        <p>We chose to make that information-sharing relationship something players can experience together.</p>
+      </article>
+      <article data-at="3">
+        <div class="node"><svg viewBox="0 0 48 48"><circle cx="16" cy="17" r="7"/><circle cx="34" cy="17" r="7"/><path d="M4 41c1-9 6-13 12-13s8 2 8 2 2-2 8-2 11 4 12 13"/></svg></div>
+        <h3>What a newcomer needs</h3>
+        <p class="big">An approachable way to practice reporting clearly and acting on an instruction, together.</p>
+        <p class="goal">Our goal: make that coordination playable.</p>
+      </article>
+    </div>
+    <footer class="foot">
+      <p><b>NASA sources</b> <a href="https://www.nasa.gov/mission/artemis-ii/" target="_blank" rel="noopener">Artemis II</a> &middot; <a href="https://www.nasa.gov/missions/" target="_blank" rel="noopener">Missions</a> &middot; <a href="https://www.nasa.gov/a-to-z-of-nasa-missions/" target="_blank" rel="noopener">A to Z</a> &middot; <a href="https://www.nasa.gov/rocket-systems-area-design-and-construction/" target="_blank" rel="noopener">Rocket Systems Area</a> &middot; <a href="https://www.nasa.gov/johnson/jsc-mission-control-center/" target="_blank" rel="noopener">Mission Control Center</a></p>
+      <p>This is our design rationale from reading these sources. We have not run a study with users.</p>
+    </footer>
+  </section>
+
+  <!-- 3 · DEVELOPMENT -->
+  <section class="slide s-dev" data-steps="4" data-seconds="60" aria-label="From Research to Gameplay">
+    <h2>From Research to Gameplay</h2>
+    <div class="pipe">
+      <div class="pipe-line" aria-hidden="true"><i></i></div>
+      <article data-at="1">
+        <div class="stop">NASA research</div>
+        <p>Mission context, ground roles, and the habit of checking equipment before it operates.</p>
+        <p class="quiet">Used as design reference. NASA information informs the design; the game uses original rules, not live telemetry.</p>
+      </article>
+      <article data-at="2">
+        <div class="stop">Simplification</div>
+        <ul class="swaps">
+          <li><s>Dozens of specialists</s><b>2 complementary roles</b></li>
+          <li><s>Long procedures</s><b>2 tasks in normal mode</b></li>
+          <li><s>Mission timeline</s><b>3 minutes in normal mode</b></li>
+          <li><s>Dense consoles</s><b>Friendly module plates</b></li>
+        </ul>
+      </article>
+      <article data-at="3">
+        <div class="stop">Prototype</div>
+        <p class="stack">Godot 4.7.2 <i>·</i> GDScript <i>·</i> ENet</p>
+        <p>One player hosts and validates every action. Each role receives only its own view.</p>
+        <svg class="arch" viewBox="0 0 400 96" role="img" aria-label="Astronaut and Mission Control both connect to the host">
+          <rect x="2" y="26" width="112" height="44" rx="6"/><text x="58" y="54">Astronaut</text>
+          <rect x="150" y="18" width="100" height="60" rx="6" class="host"/><text x="200" y="54" class="host">Host</text>
+          <rect x="286" y="26" width="112" height="44" rx="6"/><text x="342" y="54">Control</text>
+          <path d="M114 48h36M250 48h36"/>
+        </svg>
+      </article>
+      <article data-at="4">
+        <div class="stop">Testing</div>
+        <p class="metric"><b>59.8–59.9</b> average FPS</p>
+        <p>Two local processes on one integrated-graphics laptop, 1280×720. Automated checks run on Windows and Linux.</p>
+        <p class="quiet">Still pending: separate networks and tests with players.</p>
+      </article>
+    </div>
+    <footer class="foot">
+      <p><b>AI assistance</b> OpenAI Codex/ChatGPT and Anthropic Claude/Claude Code helped with code, scene design, checks and documentation. The team chose the direction and reviewed the result.</p>
+      <p>The puzzles and the countdown are game rules we wrote. They are not NASA procedures.</p>
+    </footer>
+  </section>
+
+  <!-- 4 · SOLUTION -->
+  <section class="slide s-solution" data-steps="4" data-seconds="75" aria-label="Our Solution: Two Roles, One Mission">
+    <h2>Our Solution: Two Roles, One Mission</h2>
+    <div class="duo">
+      <figure class="view view-l">
+        <div class="shot"><img src="media/cockpit-start.png" alt="Cockpit view with the antenna and code modules">
+          <span class="ring" style="left:26.3%;top:54.6%"></span>
+          <span class="call" style="left:15%;top:80%">Antenna light: fixed or blinking?</span>
+        </div>
+        <figcaption><b>Astronaut</b> Sees the panel and operates it. Has no manual.</figcaption>
+      </figure>
+      <div class="channel">
+        <p class="say say-a" data-at="1">“The antenna light is fixed.”</p>
+        <p class="say say-b" data-at="2">“Fixed light: select the Moon.”</p>
+        <p class="say say-ok" data-at="3"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>Host validates. Antenna ready.</p>
+        <div class="waves" aria-hidden="true"><i></i><i></i><i></i></div>
+      </div>
+      <figure class="view view-r">
+        <div class="shot"><img src="media/manual-antenna.png" alt="Mission control manual page for the antenna">
+          <span class="call" style="right:1.5%;top:54.5%">Fixed light → select the Moon</span>
+          <span class="call call-b" style="right:1.5%;top:67%">Blinking light → select the Star</span>
+        </div>
+        <figcaption><b>Mission Control</b> Reads the procedure and gives the instruction. Cannot touch the panel.</figcaption>
+      </figure>
+    </div>
+    <p class="mission-flow" data-at="4">Prepare <span>&rarr;</span> Observe <span>&rarr;</span> Communicate <span>&rarr;</span> Act <span>&rarr;</span> Receive feedback</p>
+    <div class="status" data-at="4">
+      <div>
+        <h3><span class="dot dot-ready"></span>Implemented in the prototype</h3>
+        <p>Lobby and role selection · Easy and normal difficulty · Antenna and numeric-code modules · Manual and calculator · Shared countdown · Liftoff, timeout and interrupted outcomes</p>
+      </div>
+      <div>
+        <h3><span class="dot dot-pending"></span>Proposed next</h3>
+        <p>Tests with players · Play across separate networks · More modules · A packaged Windows build</p>
+      </div>
+      <p class="value">What we expect players to take away: cooperation, clear communication, and a feel for how a mission is run. It is an educational adaptation, not an exact simulation.</p>
+    </div>
+  </section>
+
+  <!-- 5 · IN ACTION -->
+  <section class="slide s-action" data-steps="1" data-seconds="30" aria-label="Launch Control in Action">
+    <h2>Launch Control in Action</h2>
+    <div class="player" id="player">
+      <video id="clip" src="media/gameplay-english.mp4" preload="metadata" playsinline controls hidden aria-label="English gameplay recording of Launch Control"></video>
+      <div class="cuts" id="cuts"></div>
+      <span class="role" id="role"></span>
+      <span class="ai-note in-player">Prototype capture montage &middot; Automated round &middot; AI-assisted visuals</span>
+      <p class="caption" id="caption">Play the English gameplay video.</p>
+      <button class="play" id="play" type="button" aria-label="Play the gameplay sequence"><svg viewBox="0 0 48 48"><path d="M17 11l22 13-22 13z"/></svg></button>
+    </div>
+    <div class="timeline">
+      <span class="tl-time" id="tltime">0:00</span>
+      <div class="tl-track" id="tltrack"><i id="tlhead"></i></div>
+      <span class="tl-time" id="tlduration">0:28</span>
+    </div>
+    <p class="closing">Two roles. One shared mission. <a href="media/gameplay-english.mp4" download>Download English gameplay</a></p>
+  </section>
+
+</main>
+</div>
+<nav class="deck-controls" aria-label="Presentation controls">
+  <button id="previous" type="button" aria-label="Previous step">&larr;</button>
+  <button id="next" type="button" aria-label="Next step">&rarr;</button>
+  <button id="timer-toggle" type="button" aria-label="Start presentation timer">Start timer</button>
+  <button id="fullscreen" type="button" aria-label="Toggle fullscreen">Fullscreen</button>
+  <button id="help" type="button" aria-expanded="false" aria-controls="keys">?</button>
+</nav>
+<p class="keys hide" id="keys">Left / Right: steps &middot; 1-5 slides &middot; F fullscreen &middot; T timer &middot; R reset timer &middot; P play/pause &middot; ? help</p>
+<p class="rotate-hint" aria-hidden="true">Turn your device sideways for a larger view</p>
+<noscript><p class="no-js">Enable JavaScript to present these five slides.</p></noscript>
+<script src="deck.js"></script>
+</body>
+</html>
